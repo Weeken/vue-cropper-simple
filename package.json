@@ -1,0 +1,29 @@
+{
+  "name": "vue-cropper-simple",
+  "version": "1.0.0",
+  "description": "a vue plugin base on cropperjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "Dependencies": {
+    "cropperjs": "^1.0.0-rc.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Weeken/vue-cropper-simple.git"
+  },
+  "keywords": [
+    "vue",
+    "cropper",
+    "image",
+    "crop",
+    "cropping"
+  ],
+  "author": "Weeken",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Weeken/vue-cropper-simple/issues"
+  },
+  "homepage": "https://github.com/Weeken/vue-cropper-simple#readme"
+}
