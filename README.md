@@ -4,7 +4,7 @@
 ## 介绍--这个是基于**cropperjs**写成的**vue插件**
 ### 这个插件只单纯裁剪图片，暂时没有上传功能
 
-![图片]()
+![图片](https://github.com/Weeken/vue-cropper-simple/blob/master/demo.png)
 
 
 ## How to use
@@ -58,5 +58,8 @@ Vue.use(VueCropper)
 ```
 #### v-on:close
 关闭组件的方法
+
+###另外：
+组件样式为绝对定位，倾将父元素设置为相对定位
 
 #### github: [https://github.com/Weeken/vue-cropper-simple](https://github.com/Weeken/vue-cropper-simple)
