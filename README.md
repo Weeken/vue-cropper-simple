@@ -21,10 +21,13 @@ Vue.use(VueCropper)
 ```
 ```
 // app.vue
-<div class="cropper_warp" @click.self="show">
-    <img :src="result" alt="croppedImg" v-if="result"/>
-    <vue-cropper v-if="isShow" :img="imgUrl" :ratio="16/9" :result.sync="result" :imgData.sync="imgData" v-on:close="hide"></vue-cropper>
-  </div>
+<div>
+    <div class="cropper_warp">
+      <img :src="result" alt="croppedImg" v-if="result"/>
+      <vue-cropper v-if="isShow" :img="imgUrl" :ratio="16/9" :result.sync="result" :imgData.sync="imgData" v-on:close="hide"></vue-cropper>
+    </div>
+    <button @click="show">裁剪</button>
+</div>
 
   data () {
       return {
@@ -59,7 +62,7 @@ Vue.use(VueCropper)
 #### v-on:close
 关闭组件的方法
 
-###另外：
-组件样式为绝对定位，倾将父元素设置为相对定位
+### 另外：
+组件样式为绝对定位，请将父元素设置为相对定位
 
 #### github: [https://github.com/Weeken/vue-cropper-simple](https://github.com/Weeken/vue-cropper-simple)

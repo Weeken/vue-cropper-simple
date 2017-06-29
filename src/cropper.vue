@@ -21,7 +21,7 @@
           <div class="v-cropper-button">
             <button class="v-cropper-crop" @click="getCropBoxData">裁剪</button>
             <button class="v-cropper-cancel" @click="resetCropBoxData">取消</button>
-            <button class="v-cropper-submit" @click="submit">提交</button>
+            <button class="v-cropper-submit" @click="submit" :disabled="!confirm">提交</button>
           </div>
         </div>
       </div>
@@ -91,6 +91,7 @@ export default {
     submit () {
       this.$emit('update:result', this.croppedImg)
       this.$emit('update:imgData', this.imageData)
+      this.close()
     },
     close () {
       this.resetCropBoxData()
@@ -270,6 +271,9 @@ export default {
     color: #fff;
     background-color: #f23030;
     border: 1px solid #f23030;
+  }
+  .v-cropper-submit[disabled="disabled"]{
+    cursor: not-allowed;
   }
   .v-cropper-submit:hover{
     background-color: #cd3219;
