@@ -61,8 +61,3 @@ Vue.use(VueCropper)
 ```
 #### v-on:close
 关闭组件的方法
-
-### 另外：
-组件样式为绝对定位，请将父元素设置为相对定位
-
-#### github: [https://github.com/Weeken/vue-cropper-simple](https://github.com/Weeken/vue-cropper-simple)
