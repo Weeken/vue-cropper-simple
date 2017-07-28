@@ -126,7 +126,7 @@ export default {
 <style lang="css">
   .v-cropper-bg-mask{
     position: fixed;
-    z-index: 9999;
+    z-index: 100000;
     top: 0;
     bottom: 0;
     left: 0;
@@ -136,7 +136,7 @@ export default {
 
   .v-cropper{
     position: fixed;
-    z-index: 10000;
+    z-index: 100001;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
