@@ -1,6 +1,6 @@
 {
   "name": "vue-cropper-simple",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a vue plugin base on cropperjs",
   "main": "index.js",
   "scripts": {
