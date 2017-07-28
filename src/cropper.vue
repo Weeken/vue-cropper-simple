@@ -1,27 +1,29 @@
 <template lang="html">
-  <div class="v-cropper">
-    <span class="v-cropper-close" @click="close"></span>
-    <div class="v-cropper-top">
-      <div class="v-cropper-label">裁剪区</div>
-      <div class="v-cropper-container">
-        <div class="v-cropper-mask" v-if="confirm"></div>
-        <img :src="img" alt="" ref="image"/>
+  <div class="v-cropper-bg-mask">
+    <div class="v-cropper">
+      <span class="v-cropper-close" @click="close"></span>
+      <div class="v-cropper-top">
+        <div class="v-cropper-label">裁剪区</div>
+        <div class="v-cropper-container">
+          <div class="v-cropper-mask" v-if="confirm"></div>
+          <img :src="img" alt="" ref="image"/>
+        </div>
       </div>
-    </div>
-    <div class="v-cropper-bottom">
-      <div class="v-cropper-left">
-        <div class="v-cropper-label">预览</div>
-        <div class="v-cropper-preview"></div>
-      </div>
-      <div class="v-cropper-right">
-        <div class="v-cropper-label">数据</div>
-        <div class="v-cropper-label">长 x 宽：{{naturalWidth}} x {{naturalHeight}}</div>
-        <div class="v-cropper-data">
-          <input class="v-cropper-input" type="text" v-model="imageDataStr" placeholder="裁剪数据">
-          <div class="v-cropper-button">
-            <button class="v-cropper-crop" @click="getCropBoxData">裁剪</button>
-            <button class="v-cropper-cancel" @click="resetCropBoxData">取消</button>
-            <button class="v-cropper-submit" @click="submit" :disabled="!confirm">提交</button>
+      <div class="v-cropper-bottom">
+        <div class="v-cropper-left">
+          <div class="v-cropper-label">预览</div>
+          <div class="v-cropper-preview"></div>
+        </div>
+        <div class="v-cropper-right">
+          <div class="v-cropper-label">数据</div>
+          <div class="v-cropper-label">长 x 宽：{{naturalWidth}} x {{naturalHeight}}</div>
+          <div class="v-cropper-data">
+            <input class="v-cropper-input" type="text" v-model="imageDataStr" placeholder="裁剪数据">
+            <div class="v-cropper-button">
+              <button class="v-cropper-crop" @click="getCropBoxData">裁剪</button>
+              <button class="v-cropper-cancel" @click="resetCropBoxData">取消</button>
+              <button class="v-cropper-submit" @click="submit" :disabled="!confirm">提交</button>
+            </div>
           </div>
         </div>
       </div>
@@ -122,6 +124,16 @@ export default {
 </script>
 
 <style lang="css">
+  .v-cropper-bg-mask{
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.3);
+  }
+
   .v-cropper{
     position: fixed;
     z-index: 10000;
@@ -131,7 +143,7 @@ export default {
     width: 520px;
     padding: 10px;
     background-color: #fff;
-    box-shadow: 0 0 14px rgba(0,0,0,.2);
+    box-shadow: 0 0 14px rgba(0,0,0,.4);
   }
 
   .v-cropper-close{
