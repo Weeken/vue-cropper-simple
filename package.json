@@ -1,12 +1,12 @@
 {
   "name": "vue-cropper-simple",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a vue plugin base on cropperjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "Dependencies": {
+  "dependencies": {
     "cropperjs": "^1.0.0-rc.2"
   },
   "repository": {
