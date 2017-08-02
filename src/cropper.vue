@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="v-cropper-bg-mask" @click="close">
+  <div class="v-cropper-bg-mask" @click.self="close">
     <div class="v-cropper">
       <span class="v-cropper-close" @click="close"></span>
       <div class="v-cropper-top">
