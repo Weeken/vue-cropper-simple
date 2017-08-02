@@ -1,32 +1,35 @@
 <template lang="html">
   <div class="v-cropper-bg-mask" @click.self="close">
-    <div class="v-cropper">
-      <span class="v-cropper-close" @click="close"></span>
-      <div class="v-cropper-top">
-        <div class="v-cropper-label">裁剪区</div>
-        <div class="v-cropper-container">
-          <div class="v-cropper-mask" v-if="confirm"></div>
-          <img :src="img" alt="" ref="image"/>
+      <div class="v-cropper" ref="wrap" :style="scaleStyle">
+        <span class="v-cropper-close" @click="close"></span>
+        <div class="v-cropper-top">
+          <div class="v-cropper-label">裁剪区</div>
+          <div class="v-cropper-container">
+            <div class="v-cropper-mask" v-if="confirm"></div>
+            <img :src="img" alt="" ref="image"/>
+          </div>
         </div>
-      </div>
-      <div class="v-cropper-bottom">
-        <div class="v-cropper-left">
-          <div class="v-cropper-label">预览</div>
-          <div class="v-cropper-preview"></div>
-        </div>
-        <div class="v-cropper-right">
-          <div class="v-cropper-label">数据</div>
-          <div class="v-cropper-label">长 x 宽：{{naturalWidth}} x {{naturalHeight}}</div>
-          <div class="v-cropper-data">
-            <input class="v-cropper-input" type="text" v-model="imageDataStr" placeholder="裁剪数据">
-            <div class="v-cropper-button">
-              <button class="v-cropper-crop" @click="getCropBoxData">裁剪</button>
-              <button class="v-cropper-cancel" @click="resetCropBoxData">取消</button>
-              <button class="v-cropper-submit" @click="submit" :disabled="!confirm">提交</button>
+        <div class="v-cropper-bottom">
+          <div class="v-cropper-left">
+            <div class="v-cropper-label">预览</div>
+            <div class="v-cropper-preview"></div>
+          </div>
+          <div class="v-cropper-right">
+            <div class="v-cropper-label">数据</div>
+            <div class="v-cropper-label">长 x 宽：{{naturalWidth}} x {{naturalHeight}}</div>
+            <div class="v-cropper-data">
+              <input class="v-cropper-input" type="text" v-model="imageDataStr" placeholder="裁剪数据">
+              <div class="v-cropper-button">
+                <button class="v-cropper-crop" @click="getCropBoxData">裁剪</button>
+                <button class="v-cropper-cancel" @click="resetCropBoxData">撤销</button>
+                <button class="v-cropper-submit" @click="submit" :disabled="!confirm">提交</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    <div class="v-cropper-range-wrap">
+      <input class="v-cropper-range" type="range" v-model="range" min="20" max="100" step="10" ref="range" :style="widthStyle">
     </div>
   </div>
 </template>
@@ -34,6 +37,7 @@
 <script>
 import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.css'
+import './css/range.css'
 export default {
   name: 'VueCropper',
   props: {
@@ -45,6 +49,9 @@ export default {
   },
   data () {
     return {
+      range: 60,
+      widthStyle: { width: 0 },
+      scaleStyle: { transform: 'translate(-50%, -50%) scale(1)' },
       naturalWidth: '',
       naturalHeight: '',
       cropper: {},
@@ -53,6 +60,11 @@ export default {
       imageDataStr: '',
       imageData: {},
       croppedImg: ''
+    }
+  },
+  watch: {
+    range (val) {
+      this.scaleStyle.transform = `translate(-50%, -50%) scale(${val/60})`
     }
   },
   methods: {
@@ -74,6 +86,9 @@ export default {
       this.cropper.cropBoxData.maxWidth = 500
       this.cropper.cropBoxData.maxHeight = height
       this.cropper.setCanvasData(data)
+
+      // range
+      this.widthStyle.width = this.$refs.wrap.offsetHeight + 'px'
     },
     getCropBoxData () {
       let data = this.cropper.getCropBoxData()
@@ -134,11 +149,20 @@ export default {
     background-color: rgba(0,0,0,.3);
   }
 
+  .v-cropper-range-wrap{
+    position: fixed;
+    top: 0;
+    right: 6%;
+    bottom: 0;
+    width: 4px;
+    z-index: 999999999999;
+  }
+
   .v-cropper{
     position: fixed;
     z-index: 100001;
     top: 50%;
-    left: 50%;
+    left: 52%;
     transform: translate(-50%, -50%);
     width: 520px;
     padding: 10px;
